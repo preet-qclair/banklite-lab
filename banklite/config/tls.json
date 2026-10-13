@@ -1,0 +1,22 @@
+{
+  "endpoints": [
+    {
+      "name": "payments-api",
+      "port": 8443,
+      "minVersion": "TLSv1.3",
+      "maxVersion": "TLSv1.3",
+      "groups": "X25519MLKEM768:X25519",
+      "cert": "certs/api.crt",
+      "key": "certs/api.key"
+    },
+    {
+      "name": "acquirer-legacy",
+      "port": 8444,
+      "minVersion": "TLSv1.2",
+      "maxVersion": "TLSv1.2",
+      "ciphers": "ECDHE-RSA-AES128-GCM-SHA256:AES128-SHA:@SECLEVEL=1",
+      "cert": "certs/legacy.crt",
+      "key": "certs/legacy.key"
+    }
+  ]
+}

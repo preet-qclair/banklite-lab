@@ -1,0 +1,774 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:fdcaaf99-722d-42bd-b76d-b74cebd38a6f",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-12T04:00:42Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "bom-ref": "pkg:npm/@cyclonedx/cdxgen@12.8.5",
+          "authors": [
+            {
+              "name": "OWASP Foundation"
+            }
+          ],
+          "publisher": "OWASP Foundation",
+          "group": "@cyclonedx",
+          "name": "cdxgen",
+          "version": "12.8.5",
+          "purl": "pkg:npm/%40cyclonedx/cdxgen@12.8.5"
+        }
+      ],
+      "services": [
+        {
+          "provider": {
+            "name": "PQCA"
+          },
+          "name": "cbomkit-theia",
+          "version": "edge",
+          "services": [
+            {
+              "name": "Certificate File Plugin"
+            },
+            {
+              "name": "Secret Detection Plugin"
+            },
+            {
+              "name": "OpenSSL Config Plugin"
+            },
+            {
+              "name": "Problematic CA Detection Plugin"
+            }
+          ]
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "BankLite (network view)"
+    }
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "proto-8443",
+      "name": "TLS 1.3 on :8443",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tcp://localhost:8443"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "tls",
+          "version": "1.3",
+          "cipherSuites": [
+            {
+              "name": "TLS_AES_256_GCM_SHA384",
+              "algorithms": [
+                "alg-mlkem768",
+                "alg-ecdsa-p256"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-mlkem768",
+      "name": "X25519MLKEM768 (ML-KEM-768 + X25519)",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tcp://localhost:8443"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kem",
+          "parameterSetIdentifier": "768",
+          "cryptoFunctions": [
+            "encapsulate",
+            "decapsulate"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 3
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-ecdsa-p256",
+      "name": "ECDSA P-256 with SHA-256 (server signature)",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tcp://localhost:8443"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256r1",
+          "cryptoFunctions": [
+            "sign",
+            "verify"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "proto-8444",
+      "name": "TLS 1.2 on :8444",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tcp://localhost:8444"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "tls",
+          "version": "1.2",
+          "cipherSuites": [
+            {
+              "name": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+              "identifiers": [
+                "0xC0",
+                "0x2F"
+              ]
+            },
+            {
+              "name": "TLS_RSA_WITH_AES_128_CBC_SHA",
+              "identifiers": [
+                "0x00",
+                "0x2F"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "application",
+      "name": "BankLite (network view)"
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ff5f93bf-61ff-43be-b341-cf09a1dc8c39",
+      "name": "ECDSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "7c0965ef-9205-4caa-9ed0-ddfb6d219632",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "5173ffa8-331d-4f56-a818-1e38359bd4ae",
+      "name": "ECDSA-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.10045.4.3.2"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "e4bfdcf1-964f-47c5-b3d7-9067464f83d9",
+      "name": "ECDSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "4a170e5e-759f-4121-bb42-7bce551a000d",
+      "name": "ECDSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "public-key",
+          "algorithmRef": "e4bfdcf1-964f-47c5-b3d7-9067464f83d9",
+          "value": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEyQis0Zceei3+0IXd/KOKmU0eMOdx/l6+2fRY+Z7XWMAdYoz4JGaof/fZYZ3u7Mw35sWaTB9fqR0ea5f87Qk0Xg==",
+          "size": 0,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "2b47b9e4-03ca-400f-8a17-a99b859de776",
+      "name": "api.banklite.local",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "certificateProperties": {
+          "subjectName": "api.banklite.local",
+          "issuerName": "api.banklite.local",
+          "notValidBefore": "2026-10-12T03:53:32Z",
+          "notValidAfter": "2029-01-14T03:53:32Z",
+          "signatureAlgorithmRef": "5173ffa8-331d-4f56-a818-1e38359bd4ae",
+          "subjectPublicKeyRef": "4a170e5e-759f-4121-bb42-7bce551a000d",
+          "certificateFormat": "X.509",
+          "certificateFileExtension": "crt"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "53f41944-5fb9-4ba6-839c-3c006b84809d",
+      "name": "RSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "4648f229-92ab-4b35-abc0-dd2cc04db02d",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "0e5b593c-ec0d-445d-8a9d-3b8ddf854869",
+      "name": "SHA256-RSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "256",
+          "padding": "pkcs1v15",
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.113549.1.1.11"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "3b752908-dd11-4b95-ab67-4174377aa733",
+      "name": "RSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "cryptoFunctions": [
+            "encapsulate",
+            "decapsulate",
+            "sign"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "9298e490-c09c-4158-a169-f6503baca997",
+      "name": "RSA-2048",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "public-key",
+          "algorithmRef": "3b752908-dd11-4b95-ab67-4174377aa733",
+          "value": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnZ31gl6/JxtpRERYMleqKXYyHqbASyQ7rbqTxchXCXKZG0YjMMojPFY//UqXK98em7zY71nFtyThtWRjKNFYsT82tK2IxZXG/2zhF3qXefSRQhIltACHQgHRpo9CpmTuIgmHP8NLDzqmPts7NU5Znr5XTyLaRBdwEmWy2TA9gCNJEAw7cz2Y7x+HAD6RtMCvwwtf3KPlA/Teh0Imn/x0K/w9eu9ta9A0qf1r5ddrdSYuYfOQn5/O7KWvwmY9+PwkbK4E5Ggnrz9SabMNjA1elGBs+9q9hToMqMco5n4T73L18+cEzaPanjj+oPAz6I6/w+5Jrjx8RHBspTip1G5zywIDAQAB",
+          "size": 2048,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "9340be06-1796-4d5f-82f6-1d9a08e4104e",
+      "name": "legacy.banklite.local",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "certificateProperties": {
+          "subjectName": "legacy.banklite.local",
+          "issuerName": "legacy.banklite.local",
+          "notValidBefore": "2026-10-12T03:53:32Z",
+          "notValidAfter": "2036-10-09T03:53:32Z",
+          "signatureAlgorithmRef": "0e5b593c-ec0d-445d-8a9d-3b8ddf854869",
+          "subjectPublicKeyRef": "9298e490-c09c-4158-a169-f6503baca997",
+          "certificateFormat": "X.509",
+          "certificateFileExtension": "crt"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "7aefd8c1-50ac-4fc3-a966-2d1e0066d5a8",
+      "name": "ECDSA",
+      "description": "Curve: P-256;Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "size": 0,
+          "format": "PEM"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "9e078d4a-5b91-470b-ba23-acbbfab21635",
+      "name": "RSA-2048",
+      "description": "Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "size": 2048,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "77d859c3-87bf-499a-9fb2-abc466365cd6",
+      "name": "RSA-2048",
+      "description": "Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keys/backup_rsa.pem"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "size": 2048,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "pkcs12-file",
+      "description": "Found a PKCS #12 file, which commonly contain bundled private keys.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystore/settlement.p12"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "unknown",
+          "size": 0
+        }
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "63d39f25-38fd-4aaf-8894-d44df200a841",
+      "name": "openssl.cnf",
+      "description": "OpenSSL configuration",
+      "properties": [
+        {
+          "name": "theia:openssl:MinProtocol",
+          "value": "TLSv1.2"
+        },
+        {
+          "name": "theia:openssl:CipherString",
+          "value": "DEFAULT:AES128-SHA:@SECLEVEL=1"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config/openssl.cnf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/certificate/settlement.p12@sha256:97d89ef90bd0070853629069772f387440776d9769c259f347296a6c0d1a0c7f",
+      "name": "settlement.p12",
+      "version": "97d89ef90bd0070853629069772f387440776d9769c259f347296a6c0d1a0c7f",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "../banklite/keystore/settlement.p12"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "algorithmProperties": {
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "unknown",
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "tags": [
+        "cryptographic-asset"
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/certificate/backup_rsa.pem@sha256:a228d11ebf49b6818f78655902e08b311dc1cd78782af1cf6761574f805462b0",
+      "name": "backup_rsa.pem",
+      "version": "a228d11ebf49b6818f78655902e08b311dc1cd78782af1cf6761574f805462b0",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "../banklite/keys/backup_rsa.pem"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "algorithmProperties": {
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "unknown",
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "tags": [
+        "cryptographic-asset"
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/certificate/legacy.key@sha256:28cbf7bf23833091ae3d1170463f394a29d3c50218250303709f83dc63bbbeb7",
+      "name": "legacy.key",
+      "version": "28cbf7bf23833091ae3d1170463f394a29d3c50218250303709f83dc63bbbeb7",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "../banklite/certs/legacy.key"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "algorithmProperties": {
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "unknown",
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "tags": [
+        "cryptographic-asset"
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/certificate/api.key@sha256:477ed24b915ef95ff1dc123b66a93aaf5cb9dad300340bc56abfea1ae32d2e37",
+      "name": "api.key",
+      "version": "477ed24b915ef95ff1dc123b66a93aaf5cb9dad300340bc56abfea1ae32d2e37",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "../banklite/certs/api.key"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "algorithmProperties": {
+          "executionEnvironment": "unknown",
+          "implementationPlatform": "unknown",
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "tags": [
+        "cryptographic-asset"
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/algorithm/sha-1@2.16.840.1.113719.1.2.8.82",
+      "name": "sha-1",
+      "description": "Novell digest algorithm",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "../banklite/src/receipt.js"
+        },
+        {
+          "name": "cdx:crypto:primitive",
+          "value": "hash"
+        },
+        {
+          "name": "cdx:crypto:sourceType",
+          "value": "js-ast:node:crypto.createHash"
+        },
+        {
+          "name": "cdx:crypto:sourceLocation",
+          "value": "src/receipt.js:7:9"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "oid": "2.16.840.1.113719.1.2.8.82"
+      },
+      "tags": [
+        "cryptographic-asset"
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/algorithm/sha-256@2.16.840.1.101.3.4.2.1",
+      "name": "sha-256",
+      "description": "NIST Algorithm",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "../banklite/src/webhook.js"
+        },
+        {
+          "name": "cdx:crypto:primitive",
+          "value": "hmac"
+        },
+        {
+          "name": "cdx:crypto:sourceType",
+          "value": "js-ast:node:crypto.createHmac"
+        },
+        {
+          "name": "cdx:crypto:sourceLocation",
+          "value": "src/webhook.js:9:9"
+        }
+      ],
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "oid": "2.16.840.1.101.3.4.2.1"
+      },
+      "tags": [
+        "cryptographic-asset"
+      ]
+    }
+  ],
+  "services": [],
+  "dependencies": [
+    {
+      "ref": "5173ffa8-331d-4f56-a818-1e38359bd4ae",
+      "dependsOn": [
+        "ff5f93bf-61ff-43be-b341-cf09a1dc8c39",
+        "7c0965ef-9205-4caa-9ed0-ddfb6d219632"
+      ]
+    },
+    {
+      "ref": "0e5b593c-ec0d-445d-8a9d-3b8ddf854869",
+      "dependsOn": [
+        "53f41944-5fb9-4ba6-839c-3c006b84809d",
+        "4648f229-92ab-4b35-abc0-dd2cc04db02d"
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "bom-ref": "metadata-annotations",
+      "subjects": [
+        "urn:uuid:36064fc7-5a0a-4920-9e63-0c08d4de5c4d"
+      ],
+      "annotator": {
+        "component": {
+          "type": "application",
+          "bom-ref": "pkg:npm/@cyclonedx/cdxgen@12.8.5",
+          "authors": [
+            {
+              "name": "OWASP Foundation"
+            }
+          ],
+          "publisher": "OWASP Foundation",
+          "group": "@cyclonedx",
+          "name": "cdxgen",
+          "version": "12.8.5",
+          "purl": "pkg:npm/%40cyclonedx/cdxgen@12.8.5"
+        }
+      },
+      "timestamp": "2026-10-12T04:00:41Z",
+      "text": "This Cryptography Bill-of-Materials (CBOM) document was created on Monday, October 12, 2026 with cdxgen. The data was captured during the pre-build lifecycle phase without building the application. There are 6 components."
+    }
+  ]
+}

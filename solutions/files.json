@@ -1,0 +1,438 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:1f58b527-c95e-4d1b-978e-f7bad8666a42",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-12T04:00:40Z",
+    "tools": {
+      "services": [
+        {
+          "provider": {
+            "name": "PQCA"
+          },
+          "name": "cbomkit-theia",
+          "version": "edge",
+          "services": [
+            {
+              "name": "Certificate File Plugin"
+            },
+            {
+              "name": "Secret Detection Plugin"
+            },
+            {
+              "name": "OpenSSL Config Plugin"
+            },
+            {
+              "name": "Problematic CA Detection Plugin"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "ff5f93bf-61ff-43be-b341-cf09a1dc8c39",
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "bom-ref": "7c0965ef-9205-4caa-9ed0-ddfb6d219632",
+      "type": "cryptographic-asset",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        }
+      }
+    },
+    {
+      "bom-ref": "5173ffa8-331d-4f56-a818-1e38359bd4ae",
+      "type": "cryptographic-asset",
+      "name": "ECDSA-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.10045.4.3.2"
+      }
+    },
+    {
+      "bom-ref": "e4bfdcf1-964f-47c5-b3d7-9067464f83d9",
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "bom-ref": "4a170e5e-759f-4121-bb42-7bce551a000d",
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "public-key",
+          "algorithmRef": "e4bfdcf1-964f-47c5-b3d7-9067464f83d9",
+          "value": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEyQis0Zceei3+0IXd/KOKmU0eMOdx/l6+2fRY+Z7XWMAdYoz4JGaof/fZYZ3u7Mw35sWaTB9fqR0ea5f87Qk0Xg==",
+          "format": "PEM"
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "bom-ref": "2b47b9e4-03ca-400f-8a17-a99b859de776",
+      "type": "cryptographic-asset",
+      "name": "api.banklite.local",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "certificateProperties": {
+          "subjectName": "api.banklite.local",
+          "issuerName": "api.banklite.local",
+          "notValidBefore": "2026-10-12T03:53:32Z",
+          "notValidAfter": "2029-01-14T03:53:32Z",
+          "signatureAlgorithmRef": "5173ffa8-331d-4f56-a818-1e38359bd4ae",
+          "subjectPublicKeyRef": "4a170e5e-759f-4121-bb42-7bce551a000d",
+          "certificateFormat": "X.509",
+          "certificateExtension": "crt"
+        }
+      }
+    },
+    {
+      "bom-ref": "53f41944-5fb9-4ba6-839c-3c006b84809d",
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "bom-ref": "4648f229-92ab-4b35-abc0-dd2cc04db02d",
+      "type": "cryptographic-asset",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        }
+      }
+    },
+    {
+      "bom-ref": "0e5b593c-ec0d-445d-8a9d-3b8ddf854869",
+      "type": "cryptographic-asset",
+      "name": "SHA256-RSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "256",
+          "padding": "pkcs1v15",
+          "cryptoFunctions": [
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.11"
+      }
+    },
+    {
+      "bom-ref": "3b752908-dd11-4b95-ab67-4174377aa733",
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "cryptoFunctions": [
+            "encapsulate",
+            "decapsulate",
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "bom-ref": "9298e490-c09c-4158-a169-f6503baca997",
+      "type": "cryptographic-asset",
+      "name": "RSA-2048",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "public-key",
+          "algorithmRef": "3b752908-dd11-4b95-ab67-4174377aa733",
+          "value": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnZ31gl6/JxtpRERYMleqKXYyHqbASyQ7rbqTxchXCXKZG0YjMMojPFY//UqXK98em7zY71nFtyThtWRjKNFYsT82tK2IxZXG/2zhF3qXefSRQhIltACHQgHRpo9CpmTuIgmHP8NLDzqmPts7NU5Znr5XTyLaRBdwEmWy2TA9gCNJEAw7cz2Y7x+HAD6RtMCvwwtf3KPlA/Teh0Imn/x0K/w9eu9ta9A0qf1r5ddrdSYuYfOQn5/O7KWvwmY9+PwkbK4E5Ggnrz9SabMNjA1elGBs+9q9hToMqMco5n4T73L18+cEzaPanjj+oPAz6I6/w+5Jrjx8RHBspTip1G5zywIDAQAB",
+          "size": 2048,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "bom-ref": "9340be06-1796-4d5f-82f6-1d9a08e4104e",
+      "type": "cryptographic-asset",
+      "name": "legacy.banklite.local",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.crt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "certificate",
+        "certificateProperties": {
+          "subjectName": "legacy.banklite.local",
+          "issuerName": "legacy.banklite.local",
+          "notValidBefore": "2026-10-12T03:53:32Z",
+          "notValidAfter": "2036-10-09T03:53:32Z",
+          "signatureAlgorithmRef": "0e5b593c-ec0d-445d-8a9d-3b8ddf854869",
+          "subjectPublicKeyRef": "9298e490-c09c-4158-a169-f6503baca997",
+          "certificateFormat": "X.509",
+          "certificateExtension": "crt"
+        }
+      }
+    },
+    {
+      "bom-ref": "7aefd8c1-50ac-4fc3-a966-2d1e0066d5a8",
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "description": "Curve: P-256;Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/api.key",
+            "line": 0
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "format": "PEM"
+        }
+      }
+    },
+    {
+      "bom-ref": "9e078d4a-5b91-470b-ba23-acbbfab21635",
+      "type": "cryptographic-asset",
+      "name": "RSA-2048",
+      "description": "Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "certs/legacy.key",
+            "line": 0
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "size": 2048,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "bom-ref": "77d859c3-87bf-499a-9fb2-abc466365cd6",
+      "type": "cryptographic-asset",
+      "name": "RSA-2048",
+      "description": "Identified a Private Key, which may compromise cryptographic security and sensitive data encryption.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keys/backup_rsa.pem",
+            "line": 0
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "size": 2048,
+          "format": "PEM"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "pkcs12-file",
+      "description": "Found a PKCS #12 file, which commonly contain bundled private keys.",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystore/settlement.p12",
+            "line": 0
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "unknown"
+        }
+      }
+    },
+    {
+      "bom-ref": "63d39f25-38fd-4aaf-8894-d44df200a841",
+      "type": "file",
+      "name": "openssl.cnf",
+      "description": "OpenSSL configuration",
+      "properties": [
+        {
+          "name": "theia:openssl:MinProtocol",
+          "value": "TLSv1.2"
+        },
+        {
+          "name": "theia:openssl:CipherString",
+          "value": "DEFAULT:AES128-SHA:@SECLEVEL=1"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config/openssl.cnf"
+          }
+        ]
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "5173ffa8-331d-4f56-a818-1e38359bd4ae",
+      "dependsOn": [
+        "ff5f93bf-61ff-43be-b341-cf09a1dc8c39",
+        "7c0965ef-9205-4caa-9ed0-ddfb6d219632"
+      ]
+    },
+    {
+      "ref": "0e5b593c-ec0d-445d-8a9d-3b8ddf854869",
+      "dependsOn": [
+        "53f41944-5fb9-4ba6-839c-3c006b84809d",
+        "4648f229-92ab-4b35-abc0-dd2cc04db02d"
+      ]
+    }
+  ]
+}

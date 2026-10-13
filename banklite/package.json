@@ -1,0 +1,11 @@
+{
+  "name": "banklite",
+  "version": "1.0.0",
+  "description": "Synthetic payment API for the BankLite cryptographic discovery lab",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "license": "Apache-2.0",
+  "private": true
+}

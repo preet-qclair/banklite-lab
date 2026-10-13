@@ -1,0 +1,4 @@
+out/
+*.atom
+*.slices.json
+node_modules/

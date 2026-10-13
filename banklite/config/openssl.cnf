@@ -1,0 +1,14 @@
+# BankLite system-wide OpenSSL settings (loaded via OPENSSL_CONF).
+# Relaxed in 2021 so the old acquirer link keeps working.
+openssl_conf = openssl_init
+
+[openssl_init]
+ssl_conf = ssl_sect
+
+[ssl_sect]
+system_default = system_default_sect
+
+[system_default_sect]
+MinProtocol = TLSv1.2
+CipherString = DEFAULT:AES128-SHA:@SECLEVEL=1
+Groups = X25519MLKEM768:X25519:P-256

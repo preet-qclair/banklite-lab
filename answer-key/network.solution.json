@@ -1,0 +1,49 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": { "component": { "type": "application", "name": "BankLite (network view)" } },
+  "components": [
+    {
+      "type": "cryptographic-asset", "bom-ref": "proto-8443", "name": "TLS 1.3 on :8443",
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "tls", "version": "1.3",
+          "cipherSuites": [ { "name": "TLS_AES_256_GCM_SHA384", "algorithms": ["alg-mlkem768", "alg-ecdsa-p256"] } ]
+        }
+      },
+      "evidence": { "occurrences": [ { "location": "tcp://localhost:8443" } ] }
+    },
+    {
+      "type": "cryptographic-asset", "bom-ref": "alg-mlkem768", "name": "X25519MLKEM768 (ML-KEM-768 + X25519)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": { "primitive": "kem", "parameterSetIdentifier": "768", "nistQuantumSecurityLevel": 3, "cryptoFunctions": ["encapsulate", "decapsulate"] }
+      },
+      "evidence": { "occurrences": [ { "location": "tcp://localhost:8443" } ] }
+    },
+    {
+      "type": "cryptographic-asset", "bom-ref": "alg-ecdsa-p256", "name": "ECDSA P-256 with SHA-256 (server signature)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": { "primitive": "signature", "curve": "secp256r1", "nistQuantumSecurityLevel": 0, "cryptoFunctions": ["sign", "verify"] }
+      },
+      "evidence": { "occurrences": [ { "location": "tcp://localhost:8443" } ] }
+    },
+    {
+      "type": "cryptographic-asset", "bom-ref": "proto-8444", "name": "TLS 1.2 on :8444",
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "tls", "version": "1.2",
+          "cipherSuites": [
+            { "name": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "identifiers": ["0xC0", "0x2F"] },
+            { "name": "TLS_RSA_WITH_AES_128_CBC_SHA", "identifiers": ["0x00", "0x2F"] }
+          ]
+        }
+      },
+      "evidence": { "occurrences": [ { "location": "tcp://localhost:8444" } ] }
+    }
+  ]
+}

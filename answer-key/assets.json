@@ -1,0 +1,129 @@
+{
+  "_comment": "BankLite planted assets. 'match' rules are used by lab/score.py to decide whether a CBOM component found the asset. 'full' = right place and right algorithm; 'partial' = right place, but the algorithm or type is missing or wrong.",
+  "assets": [
+    {
+      "id": "A01", "source": "network", "assetType": "protocol",
+      "what": "TLS 1.3 endpoint on :8443 (payments API)",
+      "where": "tcp://localhost:8443",
+      "quantum": "safe key exchange (hybrid), quantum-vulnerable signature",
+      "match": { "full": [{ "loc": "8443", "type": "protocol" }] }
+    },
+    {
+      "id": "A02", "source": "network/config", "assetType": "algorithm",
+      "what": "ML-KEM-768 inside the hybrid group X25519MLKEM768",
+      "where": "tcp://localhost:8443, config/tls.json, config/openssl.cnf (Groups)",
+      "quantum": "safe",
+      "match": {
+        "full": [{ "name": "(?i)mlkem|ml-kem" }],
+        "partial": [{ "loc": "openssl\\.cnf$|tls\\.json$", "prop": "(?i)mlkem" }]
+      }
+    },
+    {
+      "id": "A03", "source": "network/config", "assetType": "protocol",
+      "what": "TLS 1.2 endpoint on :8444 that still accepts AES128-SHA (static RSA key exchange, no forward secrecy)",
+      "where": "tcp://localhost:8444, config/tls.json",
+      "quantum": "vulnerable (RSA key transport: recorded traffic can be decrypted later)",
+      "match": {
+        "full": [{ "loc": "8444", "type": "protocol" }],
+        "partial": [{ "loc": "openssl\\.cnf$", "prop": "AES128-SHA" }]
+      }
+    },
+    {
+      "id": "A04", "source": "file/network", "assetType": "certificate",
+      "what": "Server certificate api.banklite.local, ECDSA P-256 with SHA-256, plus its private key",
+      "where": "certs/api.crt, certs/api.key",
+      "quantum": "vulnerable",
+      "match": {
+        "full": [{ "loc": "api\\.crt$", "type": "certificate" }],
+        "partial": [{ "loc": "api\\.(crt|key)$" }]
+      }
+    },
+    {
+      "id": "A05", "source": "file/network", "assetType": "certificate",
+      "what": "Legacy server certificate legacy.banklite.local, RSA-2048 with SHA-256, plus its private key",
+      "where": "certs/legacy.crt, certs/legacy.key",
+      "quantum": "vulnerable",
+      "match": {
+        "full": [{ "loc": "legacy\\.crt$", "type": "certificate" }],
+        "partial": [{ "loc": "legacy\\.(crt|key)$" }]
+      }
+    },
+    {
+      "id": "A06", "source": "file", "assetType": "related-crypto-material",
+      "what": "Forgotten unencrypted RSA-2048 private key backup",
+      "where": "keys/backup_rsa.pem",
+      "quantum": "vulnerable",
+      "match": {
+        "full": [{ "loc": "backup_rsa\\.pem$", "type": "related-crypto-material", "name": "(?i)rsa" }],
+        "partial": [{ "loc": "backup_rsa\\.pem$" }]
+      }
+    },
+    {
+      "id": "A07", "source": "code", "assetType": "algorithm",
+      "what": "AES-128-ECB card tokenisation with a hard-coded key",
+      "where": "src/card.js",
+      "quantum": "Grover-weakened (128-bit), but ECB and the hard-coded key are the real problems",
+      "match": {
+        "full": [{ "loc": "card\\.js", "name": "(?i)aes.?128.?ecb" }],
+        "partial": [{ "loc": "card\\.js" }]
+      }
+    },
+    {
+      "id": "A08", "source": "code", "assetType": "algorithm",
+      "what": "SHA-1 receipt identifiers",
+      "where": "src/receipt.js",
+      "quantum": "classically broken for collisions; not a PQC issue but must be listed",
+      "match": {
+        "full": [{ "loc": "receipt\\.js", "name": "(?i)sha.?1$" }],
+        "partial": [{ "loc": "receipt\\.js" }]
+      }
+    },
+    {
+      "id": "A09", "source": "code", "assetType": "algorithm",
+      "what": "HMAC-SHA256 webhook signatures",
+      "where": "src/webhook.js",
+      "quantum": "safe (symmetric); no migration needed",
+      "match": {
+        "full": [{ "loc": "webhook\\.js", "name": "(?i)hmac" }],
+        "partial": [{ "loc": "webhook\\.js" }]
+      }
+    },
+    {
+      "id": "A10", "source": "file", "assetType": "related-crypto-material",
+      "what": "PKCS#12 keystore holding the RSA-2048 settlement signing key and certificate (password 'changeit')",
+      "where": "keystore/settlement.p12",
+      "quantum": "vulnerable",
+      "match": {
+        "full": [{ "loc": "settlement\\.p12$", "name": "(?i)rsa" }],
+        "partial": [{ "loc": "settlement\\.p12$" }]
+      }
+    },
+    {
+      "id": "A11", "source": "code", "assetType": "algorithm",
+      "what": "SHA256withRSA signing of the settlement file (Java)",
+      "where": "settlement/SettlementSigner.java",
+      "quantum": "vulnerable",
+      "match": {
+        "full": [{ "loc": "SettlementSigner\\.java", "name": "(?i)rsa" }],
+        "partial": [{ "loc": "SettlementSigner\\.java" }]
+      }
+    },
+    {
+      "id": "A12", "source": "config", "assetType": "protocol",
+      "what": "System OpenSSL policy: MinProtocol TLSv1.2, CipherString with AES128-SHA at @SECLEVEL=1",
+      "where": "config/openssl.cnf",
+      "quantum": "allows quantum-vulnerable RSA key transport system-wide",
+      "match": { "full": [{ "loc": "openssl\\.cnf$", "prop": "SECLEVEL" }] }
+    },
+    {
+      "id": "A13", "source": "code", "assetType": "algorithm",
+      "what": "AES-256-CBC with a key split across two arrays and a zero IV; the cipher name is built at runtime",
+      "where": "src/legacy/vault.js",
+      "quantum": "symmetric strength is fine; the fixed IV and embedded key are not",
+      "match": {
+        "full": [{ "loc": "vault\\.js", "name": "(?i)aes.?256.?cbc" }],
+        "partial": [{ "loc": "vault\\.js" }]
+      }
+    }
+  ]
+}

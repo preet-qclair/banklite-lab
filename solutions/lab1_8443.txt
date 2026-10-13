@@ -1,0 +1,4 @@
+subject=C=IN, O=BankLite, CN=api.banklite.local
+Peer signature type: ecdsa_secp256r1_sha256
+Negotiated TLS1.3 group: X25519MLKEM768
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
