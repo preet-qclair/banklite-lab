@@ -67,7 +67,7 @@ jq -r '.components[] | [.cryptoProperties.assetType, .name, (.evidence.occurrenc
 jq -r '.components[] | select(.type=="cryptographic-asset") | [.cryptoProperties.assetType, .name, (.properties // [] | map(select(.name=="SrcFile").value) | join(","))] | @tsv' out/code.json
 ```
 
-Now be the tool yourself. Read the system and look for what the scanners missed:
+Then read the code yourself and look for what the scanners missed:
 
 ```sh
 ls -R /banklite

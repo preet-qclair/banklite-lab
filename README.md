@@ -3,9 +3,9 @@
 **Where is our cryptography? Hands-on cryptographic discovery and CBOM generation for
 post-quantum migration.**
 
-Every post-quantum migration starts with an inventory, because you cannot replace cryptography
-you cannot find. BankLite is a small synthetic payment system with 13 cryptographic assets
-hidden in its network endpoints, files, configuration and code. In one hour you find them with
+Every post-quantum migration starts with a cryptographic inventory. BankLite is a small synthetic
+payment system with 13 cryptographic assets planted in its network endpoints, files,
+configuration and code. In one hour you find them with
 free open-source tools, record them as a CycloneDX CBOM (Cryptographic Bill of Materials),
 compare what each tool sees and misses, and rank the findings for migration.
 
@@ -17,7 +17,7 @@ nothing, and it uses no real company's systems or data.
 * Why cryptographic inventory comes first in post-quantum migration.
 * How to discover cryptography from three views: the network, the file system and the source code.
 * How to read and write a CycloneDX CBOM.
-* Why no single discovery tool is enough, shown with numbers rather than claims.
+* Why no single discovery tool is enough, measured against an answer key.
 * How to rank quantum-vulnerable assets with a Mosca-style rule, and how to tell quantum
   problems from classical ones.
 
