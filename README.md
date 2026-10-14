@@ -23,8 +23,11 @@ nothing, and it uses no real company's systems or data.
 
 ## Quick start
 
-You need Docker: Docker Desktop on macOS or Windows (WSL2 backend), or Docker Engine on Linux.
-You also need about 3 GB of free disk space and 4 GB of RAM.
+Supported: **Linux** (Docker Engine) and **Windows 10/11** (Docker Desktop with the WSL2 backend).
+You need about 3 GB of free disk space and 4 GB of RAM. The build needs internet once and takes a
+few minutes; after that, nothing needs a network connection.
+
+### Linux
 
 ```sh
 git clone https://github.com/preet-qclair/banklite-lab.git
@@ -34,19 +37,36 @@ mkdir -p out
 docker run --rm -it --user "$(id -u):$(id -g)" -v "$PWD/out:/lab/out" banklite-lab ./check.sh
 ```
 
-On Windows PowerShell, leave out `--user ...` and use `-v "${PWD}/out:/lab/out"`.
+### Windows (PowerShell)
 
-The check should end with `ALL OK`. The build needs internet once (a few minutes). After that,
-nothing needs a network connection.
+First-time setup (WSL2, Docker Desktop, Git) is described step by step in
+**[docs/WINDOWS.md](docs/WINDOWS.md)**. With those installed:
 
-To start the lab shell, run the same command without `./check.sh`:
-
-```sh
-docker run --rm -it --user "$(id -u):$(id -g)" -v "$PWD/out:/lab/out" banklite-lab
+```powershell
+git clone https://github.com/preet-qclair/banklite-lab.git
+cd banklite-lab
+docker build -t banklite-lab .
+mkdir out
+docker run --rm -it -v "${PWD}/out:/lab/out" banklite-lab ./check.sh
 ```
 
-Then follow **[docs/HANDOUT.md](docs/HANDOUT.md)**. Facilitators should read
-**[docs/FACILITATOR.md](docs/FACILITATOR.md)**.
+### Then
+
+The check should end with `ALL OK`. To start the lab shell, run the same `docker run` command
+without `./check.sh`. Then follow **[docs/HANDOUT.md](docs/HANDOUT.md)**. Facilitators should
+read **[docs/FACILITATOR.md](docs/FACILITATOR.md)**.
+
+## Troubleshooting
+
+| Message | Fix |
+|---|---|
+| `cannot write to /lab/out` | Linux: add `--user "$(id -u):$(id -g)"`. Windows: run from inside the `banklite-lab` folder and keep the quotes around `"${PWD}/out:/lab/out"` |
+| `/bin/sh^M: not found` or `\r` errors (Windows) | The clone has Windows line endings. Run `git pull`, then `git rm -r --cached . -q; git reset --hard`, and rebuild |
+| `error during connect` / `Cannot connect to the Docker daemon` | Docker is not running. Windows: start Docker Desktop and wait for "Engine running". Linux: `sudo systemctl start docker` |
+| `permission denied ... docker.sock` (Linux) | Add yourself to the docker group: `sudo usermod -aG docker $USER`, then log out and in |
+| BankLite ports fail in the check | Run `cat /tmp/banklite.log` inside the container, then start the container again |
+| Build is very slow or runs out of memory (Windows) | Docker Desktop, Settings, Resources: give WSL at least 4 GB |
+| No working Docker at all | Pair with a neighbour. Pre-generated output for every step is in `solutions/` |
 
 ## The tools
 
@@ -72,7 +92,8 @@ banklite/       the target system: Node.js payment API, Java settlement signer, 
                 Keys and certificates are generated when the image is built.
 lab/            check.sh, start.sh, templates/network.json (the CBOM you fill in)
 worksheet/      prioritisation worksheet (xlsx with formulas, plus a plain csv)
-docs/           HANDOUT.md (participants), FACILITATOR.md (running the session)
+docs/           HANDOUT.md (participants), FACILITATOR.md (running the session),
+                WINDOWS.md (first-time setup on Windows)
 facilitator/    score.py (scores CBOMs against the answer key), run-all.sh (rehearsal)
 answer-key/     the 13 planted assets, the solution CBOM and the worksheet solution. Try not to peek
 solutions/      pre-generated output of every lab step, as a fallback

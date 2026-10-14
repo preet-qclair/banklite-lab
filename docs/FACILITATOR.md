@@ -12,6 +12,7 @@
    ```sh
    docker save banklite-lab | gzip > banklite-lab.tar.gz      # about 450 MB
    # participant side: docker load < banklite-lab.tar.gz
+   # Windows: docker save banklite-lab -o banklite-lab.tar  /  docker load -i banklite-lab.tar
    ```
 3. **Keep the versions pinned.** The results depend on tool versions. A newer cdxgen may fix the
    behaviour behind A07, which changes the scores, so do not rebuild with newer tools the night
@@ -95,7 +96,7 @@ works across the two versions.
 
 | Symptom | Fix |
 |---|---|
-| `check.sh`: cannot write to `/lab/out` | Linux: add `--user "$(id -u):$(id -g)"`. Or skip the mount and use `docker cp` |
+| `check.sh`: cannot write to `/lab/out` | Linux: add `--user "$(id -u):$(id -g)"`. Windows: run from the repo folder with `-v "${PWD}/out:/lab/out"`. Or skip the mount and use `docker cp` |
 | BankLite ports fail | `cat /tmp/banklite.log`, then restart the container |
 | No Docker on the laptop | Pair with a neighbour; every step is on the projector |
 | A pair falls behind | `cp solutions/* out/` and join at Lab 3 |
