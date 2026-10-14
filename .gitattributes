@@ -1,0 +1,7 @@
+# Keep LF line endings on every OS, so a Windows clone builds the same image as Linux.
+* text=auto eol=lf
+*.xlsx binary
+*.csv -text
+*.p12 binary
+*.der binary
+*.png binary
