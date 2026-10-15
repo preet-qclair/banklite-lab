@@ -103,7 +103,15 @@ docs/           HANDOUT.md (participants), FACILITATOR.md (running the session),
 facilitator/    score.py (scores CBOMs against the answer key), run-all.sh (rehearsal)
 answer-key/     the 13 planted assets, the solution CBOM and the worksheet solution. Try not to peek
 solutions/      pre-generated output of every lab step, as a fallback
+slides/         draft slides for the ISEA-ISAP 2026 workshop and tutorial (PDF)
 ```
+
+## Slides
+
+Draft slides for the two ISEA-ISAP 2026 sessions:
+[workshop](slides/workshop-slides.pdf) (this lab, hands-on) and
+[tutorial](slides/tutorial-slides.pdf) (discovery beyond code, files and the network: identity, cloud,
+HSMs and binaries). Feedback is welcome as a GitHub issue.
 
 ## Licence
 
