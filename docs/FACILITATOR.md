@@ -4,7 +4,7 @@
 
 1. **Rehearse on the pinned image.** Run every lab end to end and check the scores:
    ```sh
-   docker run --rm --network none -v "$PWD/out:/lab/out" banklite-lab ./facilitator/run-all.sh
+   docker run --rm --network none --user "$(id -u):$(id -g)" -v "$PWD/out:/lab/out" banklite-lab ./facilitator/run-all.sh
    ```
    You should get the scores in the table under "Expected results". The run takes under a
    minute, most of it testssl.sh.
@@ -22,12 +22,12 @@
 
 | Time | Segment | What to say or show |
 |---|---|---|
-| 0-7 | Why inventory first (demo) | Harvest-now, decrypt-later. India's DST roadmap puts inventory first and expects vendor CBOMs from FY 2027-28, and CERT-In v2.0 already lists CBOM minimum elements. The IIT Jammu measurement of 32,011 domains found 49.3% hybrid key exchange but 0% post-quantum certificates. Show `openssl s_client` on :8443 live. |
-| 7-19 | Lab 1, network | Walk the room. Make sure pairs notice the fallback to X25519 and the `AES128-SHA` (static RSA) suite on :8444. |
-| 19-34 | Lab 2, files and code | Point out early that theia does not scan source code and cdxgen does not parse certificates. Ask who found something by reading the code. |
-| 34-46 | Lab 3, merge | Let the validation failure happen, because it is the lesson: tools emit invalid CBOMs too. |
-| 46-56 | Lab 4, prioritise | Ask two pairs for their top five. They will disagree about X for signatures, which is a good discussion. |
-| 56-60 | Answer key | Run the scorer on the projector and reveal the three assets no tool found. |
+| 0-12 | The task | Harvest-now, decrypt-later and Mosca. India's DST roadmap puts inventory first and expects vendor CBOMs from FY 2027-28, and CERT-In v2.0 already lists CBOM minimum elements. The IIT Jammu measurement of 32,011 domains found 49.3% hybrid key exchange but 0% post-quantum certificates. The four asset types, the CBOM as a graph, the three views. Everyone runs `check.sh` and gets `ALL OK`. |
+| 12-22 | Lab 1, network | Walk the room. Make sure pairs notice the fallback to X25519 and the `AES128-SHA` (static RSA) suite on :8444. |
+| 22-35 | Lab 2, files and code | Point out early that theia does not scan source code and cdxgen does not parse certificates. Ask who found something by reading the code. |
+| 35-45 | Lab 3, merge and validate | Let the validation failure happen, because it is the lesson: tools emit invalid CBOMs too. |
+| 45-53 | Lab 4, prioritise | Ask two pairs for their top five. They will disagree about X for signatures, which is a good discussion. |
+| 53-60 | Answer key and debrief | Run the scorer on the projector, reveal the three assets no tool found and why, and the tool defects met during the labs. |
 
 Scoring on the projector:
 
@@ -107,7 +107,7 @@ every build, but asset names, paths and scores are the same.
 ## Regenerating `solutions/`
 
 ```sh
-mkdir -p out && docker run --rm --network none -v "$PWD/out:/lab/out" banklite-lab ./facilitator/run-all.sh
+mkdir -p out && docker run --rm --network none --user "$(id -u):$(id -g)" -v "$PWD/out:/lab/out" banklite-lab ./facilitator/run-all.sh
 cp out/{lab1_8443.txt,lab1_testssl_8444.txt,files.json,code.json,merged.json,merged.fixed.json,score.txt} solutions/
 cp answer-key/network.solution.json solutions/network.json
 ```

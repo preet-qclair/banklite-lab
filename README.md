@@ -50,6 +50,12 @@ mkdir out
 docker run --rm -it -v "${PWD}/out:/lab/out" banklite-lab ./check.sh
 ```
 
+### macOS (not yet tested)
+
+Use Docker Desktop and the Linux commands above. The image is built for x86-64, so on an Apple
+Silicon Mac (M1 or later) add `--platform linux/amd64` to both `docker build` and `docker run`.
+The build is slower under emulation. If it fails, pair with a neighbour.
+
 ### Then
 
 The check should end with `ALL OK`. To start the lab shell, run the same `docker run` command

@@ -10,7 +10,7 @@ save in `out/` also appears in the `out/` folder on your laptop.
 
 ---
 
-## Lab 1: the network view (12 min)
+## Lab 1: the network view (10 min)
 
 BankLite listens on two ports, 8443 and 8444. Find out what each one negotiates.
 
@@ -47,7 +47,7 @@ jq . out/network.json > /dev/null && echo "valid JSON"
 
 ---
 
-## Lab 2: the file and code view (15 min)
+## Lab 2: the file and code view (13 min)
 
 Scan BankLite with two tools. Each one writes a CBOM.
 
@@ -82,7 +82,7 @@ cat /banklite/settlement/SettlementSigner.java /banklite/config/*
 
 ---
 
-## Lab 3: merge, validate, compare (12 min)
+## Lab 3: merge and validate (10 min)
 
 Combine the three views into one CBOM and check it against the CycloneDX schema:
 
@@ -117,7 +117,7 @@ jq '.components[] | select(.cryptoProperties.assetType=="certificate") | .crypto
 
 ---
 
-## Lab 4: prioritise (10 min)
+## Lab 4: prioritise (8 min)
 
 ```sh
 cp worksheet/prioritise.xlsx out/
@@ -142,7 +142,7 @@ Then:
 
 ---
 
-## Answer key (4 min)
+## Answer key and debrief (7 min)
 
 The facilitator reveals all 13 assets and scores everyone's CBOMs live. Count your pair's points.
 
